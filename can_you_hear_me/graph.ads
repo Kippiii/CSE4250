@@ -3,7 +3,8 @@ with Ada.Containers.Doubly_Linked_Lists;
 
 package Graph is
 
-   package StringLists is new Ada.Containers.Doubly_Linked_Lists (Unbounded_String);
+   package StringLists is new Ada.Containers.Doubly_Linked_Lists
+      (Unbounded_String);
 
    type Node is record
       Name : Unbounded_String;

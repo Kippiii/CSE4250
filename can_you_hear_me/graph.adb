@@ -21,6 +21,7 @@ package body Graph is
       --
       --  Inputs:
       --    Position: Cursor pointing to the current spot in the list
+      procedure FindStart (Position : in NodeLists.Cursor);
       procedure FindStart (Position : in NodeLists.Cursor) is
          CurNode : Node;
       begin
@@ -72,6 +73,7 @@ package body Graph is
       --
       --  Input:
       --    Position: The current node in the list being considered
+      procedure SetVisited (Position : in NodeLists.Cursor);
       procedure SetVisited (Position : in NodeLists.Cursor) is
          CurrentNode : Node;
       begin
@@ -84,6 +86,7 @@ package body Graph is
       --
       --  Input:
       --    Position: Position of the node being checked
+      procedure FindNode (Position : in NodeLists.Cursor);
       procedure FindNode (Position : in NodeLists.Cursor) is
          CurrentNode : Node;
       begin
@@ -100,6 +103,7 @@ package body Graph is
       --
       --  Input:
       --    Position: Position of the node being added
+      procedure AddToQueue (Position : in StringLists.Cursor);
       procedure AddToQueue (Position : in StringLists.Cursor) is
       begin
          Queue.Append (StringLists.Element (Position));
