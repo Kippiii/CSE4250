@@ -55,9 +55,9 @@ data Expression = Atom Char | Not Expression | And Expression Expression | Or Ex
 -- |Implements a way of printing an expression
 instance Show Expression where
     show (Atom c) = [c]
-    show (Not e) = "~" ++ (show e)
-    show (And e1 e2) = "(" ++ (show e1) ++ " & " ++ (show e2) ++ ")"
-    show (Or e1 e2) = "(" ++ (show e1) ++ " v " ++ (show e2) ++ ")"
+    show (Not e) = "~" ++ show e
+    show (And e1 e2) = "(" ++ show e1 ++ " & " ++ show e2 ++ ")"
+    show (Or e1 e2) = "(" ++ show e1 ++ " v " ++ show e2 ++ ")"
 
 -- |Implements a way of checking if two expressions are equivalent
 instance Eq Expression where
@@ -122,7 +122,7 @@ genCNFRepeat e
 
 -- |Checkes if an expression is a tautology
 checkTautology :: Expression -> Bool
-checkTautology (And e1 e2) = (checkTautology e1) && (checkTautology e2)
+checkTautology (And e1 e2) = checkTautology e1 && checkTautology e2
 checkTautology e = checkDoubles $ checkClause e
 
 -- |Represents an empty list comp of characters
@@ -147,7 +147,7 @@ main = do
     if null line
         then return ()
     else do
-        let expr = generateFinalForm $ line
+        let expr = generateFinalForm line
         do
-            putStrLn $ (show $ checkTautology expr) ++ " " ++ (show expr)
+            putStrLn $ show (checkTautology expr) ++ " " ++ show expr
             main
