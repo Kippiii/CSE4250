@@ -42,7 +42,8 @@ addToSecondList x (ListComp l1 l2)
 
 -- |Combines two list comps to make a new one
 combineListComps :: (Eq a ) => ListComp a -> ListComp a -> ListComp a
-combineListComps (ListComp l1 l2) (ListComp l3 l4) = ListComp (union l1 l3) (union l2 l4)
+combineListComps (ListComp l1 l2) (ListComp l3 l4) =
+   ListComp (union l1 l3) (union l2 l4)
 
 -- |Checks if there are elements in both lists in a list comp
 checkDoubles :: (Eq a) => ListComp a -> Bool
@@ -50,7 +51,10 @@ checkDoubles (ListComp l1 l2) = not $ null (intersect l1 l2)
 
 
 -- |Represents an expression in prop logic
-data Expression = Atom Char | Not Expression | And Expression Expression | Or Expression Expression
+data Expression = Atom Char |
+                  Not Expression |
+                  And Expression Expression |
+                  Or Expression Expression
 
 -- |Implements a way of printing an expression
 instance Show Expression where
