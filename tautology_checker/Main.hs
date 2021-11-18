@@ -153,5 +153,5 @@ main = do
     else do
         let expr = generateFinalForm line
         do
-            putStrLn $ show (checkTautology expr) ++ " " ++ show expr
+            putStrLn $ (if checkTautology expr then "True" else "False") ++ " " ++ show expr
             main
