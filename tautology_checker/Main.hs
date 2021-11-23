@@ -144,7 +144,16 @@ checkClause _ = error "The expression was not in CNF!"
 generateFinalForm :: String -> Expression
 generateFinalForm = genCNFRepeat . genNNF . generateExpression
 
+-- |Computes the solution for a specific test case
+do_test_case :: String -> String
+do_test_case line = (if checkTautology expr then "true" else "false") ++ " " ++ (show expr)
+   where expr = generateFinalForm line
 
+
+main :: IO ()
+main = interact $ unlines . map do_test_case . lines
+
+{-
 main :: IO ()
 main = do
     line <- getLine
@@ -155,3 +164,4 @@ main = do
         do
             putStrLn $ (if checkTautology expr then "true" else "false") ++ " " ++ show expr
             main
+-}
